@@ -1,9 +1,10 @@
+import SearchScreen from "./components/SearchScreen/SearchScreen"
 
 function App() {
 
   return (
     <>
-      <p>Hii</p>
+      <SearchScreen />
     </>
   )
 }

@@ -8,22 +8,33 @@
     align-items: center;
     justify-content: center;
 
+    @media(max-width: 800px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     h2 {
         font-weight: 600;
         font-size: 36px;
         margin: 0rem 0 0.5rem 0;
         color: #000;
+        text-align: center;
     }
 
     h4 {
         font-weight: 400;
         font-size: 18px;
         margin: 0rem 0 1.5rem 0;
+        text-align: center;
     }
 
     .searchContainer {
         margin-top: 20px;
         width: 700px;
+
+        @media(max-width: 800px) {
+            width: 100%;
+        }
 
         .input {
             @extend %commonInput;
@@ -35,11 +46,24 @@
             width: 100%;
             gap: 2rem;
 
+            @media(max-width: 450px) {
+                flex-direction: column;
+                gap: 0px;
+            }
+
             .input {
                 @extend %commonInput;
 
                 .inputField {
                     width: calc(350px - 1rem);
+
+                    @media(max-width: 800px) {
+                        width: calc(50vw - 3rem);
+                    }
+
+                    @media(max-width: 450px) {
+                        width: calc(100vw - 4rem);
+                    }
                 }
             }
         }

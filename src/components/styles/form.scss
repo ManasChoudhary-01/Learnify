@@ -21,9 +21,9 @@
         color: #000;
         transition: all 0.3s ease-in-out;
 
-        @media(max-width: 1050px) {
-            width: 80vw;
-        }
+        // @media(max-width: 1050px) {
+        //     width: 80vw;
+        // }
     }
 
     .textArea {
@@ -40,9 +40,9 @@
         transition: all 0.3s ease-in-out;
         color: #000;
 
-        @media(max-width: 1050px) {
-            width: 80vw;
-        }
+        // @media(max-width: 1050px) {
+        //     width: 80vw;
+        // }
     }
 
     .inputField::placeholder,

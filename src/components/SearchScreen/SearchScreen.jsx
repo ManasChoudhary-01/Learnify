@@ -26,12 +26,6 @@ export default function SearchScreen() {
         { value: "Expert", label: "Expert" }
     ];
 
-    // useEffect(() => {
-    //     if(promptMessage.length() !== 0) {
-    //         setEnabled(true);
-    //     }
-    // },[promptMessage]);
-
     const handlePromptSubmit = async (values , {resetForm}) => {
 
         try {

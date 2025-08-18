@@ -26,18 +26,27 @@ export default function SearchScreen() {
         { value: "Expert", label: "Expert" }
     ];
 
-    const handlePromptSubmit = async (values , {resetForm}) => {
+    const handlePromptSubmit = async (values, { resetForm }) => {
+
+        const finalValues = {
+            ...values,
+            hours: Number(values.hours),
+            weeks: Number(values.weeks)
+        };
 
         try {
             const response = await toast.promise(
-                axios.post("https://httpbin.org/post", values, {
-                    headers: {
-                        "Content-Type": "application/json"
+                axios.post("https://httpbin.org/post",
+                    finalValues,
+                    {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
                     }
-                }),
+                ),
                 {
                     pending: "Sending request...",
-                    success: "Request sent successfully!",
+                    success: "Appointment created successfully!",
                     error: "Error while sending request"
                 }
             );
@@ -48,19 +57,21 @@ export default function SearchScreen() {
 
         } catch (error) {
             console.log("Error while fetching the course details:", error);
+        } finally {
+            setEnabled(false);
         }
     }
 
-    useEffect(() => {
-        const onKeyDown = (e) => {
-            if ((e.key === 'Enter' || e.code === 'NumpadEnter') && enabled) {
-                e.preventDefault();
-                handlePromptSubmit;
-            }
-        };
-        window.addEventListener('keydown', onKeyDown);
-        return () => window.removeEventListener('keydown', onKeyDown);
-    }, [enabled, handlePromptSubmit]);
+    // useEffect(() => {
+    //     const onKeyDown = (e) => {
+    //         if ((e.key === 'Enter' || e.code === 'NumpadEnter') && enabled) {
+    //             e.preventDefault();
+    //             handlePromptSubmit();
+    //         }
+    //     };
+    //     window.addEventListener('keydown', onKeyDown);
+    //     return () => window.removeEventListener('keydown', onKeyDown);
+    // }, [enabled, handlePromptSubmit]);
 
     return (
         <div className={styles.mainContainer}>
@@ -71,7 +82,7 @@ export default function SearchScreen() {
                 <Formik
                     initialValues={initialValues}
                     onSubmit={handlePromptSubmit}
-                    // onSubmit={(values) => console.log(values)}
+                // onSubmit={(values) => console.log(values)}
                 >
                     {({ values, setFieldValue }) => (
                         <Form className={styles.formContainer}>
